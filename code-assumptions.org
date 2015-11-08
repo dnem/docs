@@ -1,0 +1,31 @@
+* CloudNative Go Code Assumptions
+** Use Lattice
+*** DockerHub as default repo
+*** Wercker to build and publish to Dockerhub
+*** ltc to create/run apps locally
+*** ltc logs for app monitoring/debugging
+** Backing services
+*** Deployed within Lattice via DockerHub
+*** no local system modifications required
+** Local System Modifications
+*** Getting Started
+**** Install Git
+**** Install Go
+***** Github, Bazaar, Mercurial
+**** Install Vagrant
+**** Install VirtualBox
+**** Install Lattice
+**** Install ltc
+**** Holy Unicorn Shit Factory Initiated
+*** CI/CD Chapter
+**** Install wercker cli?
+*** Monitoring/Logging
+**** X-Ray
+* Things to Address
+** Binding Services
+*** Environment Setup
+**** VCAP?
+** Pushing to CF
+*** Few Code Changes
+*** Docker --> CF
+*** Code --> Buildpack --> CF
