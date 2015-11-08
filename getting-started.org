@@ -3,13 +3,13 @@
 *** OSX
 **** via Homebrew
 ***** Install Homebrew
-First, you we need to install the command line tools for
+First, we need to install the command line tools for
 XCode. Open a Terminal window and enter the following:
 #+BEGIN_SRC sh
   xcode-select --install
 #+END_SRC
 
-Next, we will install Homebrew:
+Install Homebrew:
 #+BEGIN_SRC sh
   ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
 #+END_SRC
@@ -19,4 +19,21 @@ Verify successful install:
   brew doctor
 #+END_SRC
 
-Next, install [Homebrew Cask](http://caskroom.io)
+Install [[Homebrew Cask]]:
+#+BEGIN_SRC sh
+  brew install caskroom/cask/brew-cask
+#+END_SRC
+
+***** Install Git
+Werdz
+#+BEGIN_SRC sh
+  brew install git
+#+END_SRC
+
+***** Install Go
+More Werdz
+#+BEGIN_SRC sh
+  brew install go
+#+END_SRC
+
+Set up your Go environment:
