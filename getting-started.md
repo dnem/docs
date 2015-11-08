@@ -1,8 +1,7 @@
 # Getting Started
 ## Installation
-### OSX
-#### via Homebrew
-##### Install Homebrew
+### OSX via Homebrew
+#### Install Homebrew
 First, we need to install the command line tools for
 XCode. Open a Terminal window and enter the following:
 ```bash
@@ -24,37 +23,57 @@ Install [Homebrew Cask](http://caskroom.io):
   brew install caskroom/cask/brew-cask
 ```
 
-##### Install Git
+#### Install Git
 Werdz
 ```bash
   brew install git
 ```
 
-##### Install Go
+#### Install Go
 More Werdz
 ```bash
   brew install go
 ```
 
-There will likely be a separate section for configuration your Go environment.
+*There will likely be a separate section for configuration your Go environment. Refer to: https://golang.org/doc/install*
 
-##### Install Vagrant
+#### Install Vagrant
 Vagrant is...werdz
 ```bash
   brew cask install vagrant
 ```
 
-##### Install VirtualBox
+#### Install VirtualBox
 VirtualBox is...werdz
 ```bash
   brew cask install virtualbox
 ```
 
-##### Install Lattice
-refer to http://lattice.cf/docs/getting-started/
+#### Install Lattice
+**(OSX Section, not specific to Homebrew.  Prerequisites are Git, Vagrant, VirtualBox)**
 
-###### Install ltc CLI
-refer to http://lattice.cf/docs/getting-started/
+Download a Lattice release bundle from the [Github Releases](https://github.com/cloudfoundry-incubator/lattice-release/releases) page.  Once you've downloaded a bundle, unzip it and `vagrant up` in the vagrant directory:
 
+```bash
+unzip lattice-bundle-VERSION.zip
+cd lattice-bundle-VERSION/vagrant
+vagrant up
+```
+
+Then bring up the Vagrant box:
+```bash
+vagrant up --provider virtualbox
+```
+##### Install ltc (The Lattice CLI)
+
+The command line tool `ltc` can be downloaded from teh cluster:
+
+```bash
+$ curl -O http://receptor.local.lattice.cf/v1/sync/osx/ltc
+$ chmod a+x ltc
+$ mv ltc /usr/local/bin
+```
+
+*Reference: http://lattice.cf/docs/getting-started/*
 
 
