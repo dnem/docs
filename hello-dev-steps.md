@@ -22,12 +22,14 @@ May need to walk the user through the Github sign-up process...
 ### Clone the new repo
 >Normally, you would clone your repo via `git clone git@github.com:GITHUB-USERNAME/GITHUB-REPO.git`.  However, Go provides `go get`, a command that will clone a specified Go project and install it properly in your $GOPATH.
 
+>This offers us an opportunity to exercise the command and to demonstrate how Go expects to have its environment structured.
+
 **Prerequisites:**
 * Go installed and $GOPATH configured
 * Github repo created
 
 ```bash
-go get github.com/GITHUB-USERNAME/GITHUB-REPO`
+go get github.com/GITHUB-USERNAME/GITHUB-REPO
 ```
 This will clone your repo in the correct spot within your Go environment:
 
@@ -38,6 +40,72 @@ This command will attempt to build the Go source files in a repository.  Since a
 
 `no buildable Go source files in /$GOPATH/src/github/GITHUB-USERNAME/GITHUB-REPO`
 
+However, if you navigate to where the repo was cloned, you will see that the contents were successfully cloned:
+```bash
+$ cd $GOPATH/src/github.com/GITHUB-USERNAME/GITHUB-REPO
+$ ls -al
+total 16
+drwxr-xr-x   5 you  staff  170 Nov  8 18:47 .
+drwxr-xr-x   6 you  staff  204 Nov  8 18:47 ..
+drwxr-xr-x  12 you  staff  408 Nov  8 18:47 .git
+-rw-r--r--   1 you  staff  266 Nov  8 18:47 .gitignore
+-rw-r--r--   1 you  staff   25 Nov  8 18:47 README.md
+```
+
+At this point we are ready to start writing Go!
+
+#### Or are we?
+>There is a host of tools that make writing Go far more enjoyable.  Do we need to walk the reader through installing them?  Should we also take a moment to talk about editors?
+
+>**Tools:**
+>* goimports - formats source and manages imports
+>* gocode - supports autocomplete
+>* godef - enables jumping to definition
+>* golint - code linting
+>* vet - code quality inspection
+>* godep - dependency management & vendoring
+
+>**Editors:**
+>* Atom - OSX, Windows, Linux; go-plus plugin
+>* Sublime Text - OSX, Windows, Linux; GoSublime plugin
+>* Vim - sux on windows; vim-go plugin
+>* Emacs - runs everywhere; go-mode (config and usage not for the feint of heart)
+
+### Hello, World!
+
+Create a new file called `main.go`:
+
+```golang
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"os"
+
+	"github.com/codegangsta/negroni"
+)
+
+func main() {
+	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "8080"
+	}
+
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", hello)
+
+	n := negroni.Classic()
+	n.UseHandler(mux)
+	hostString := fmt.Sprintf(":%s", port)
+	n.Run(hostString)
+}
+
+func hello(res http.ResponseWriter, req *http.Request) {
+	fmt.Fprintln(res, "Hello from Go!")
+}
+
+```
 
 
 ### VCAP & Environment
