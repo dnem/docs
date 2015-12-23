@@ -66,7 +66,7 @@ vagrant up --provider virtualbox
 ```
 ##### Install ltc (The Lattice CLI)
 
-The command line tool `ltc` can be downloaded from teh cluster:
+The command line tool `ltc` can be downloaded from the cluster:
 
 ```bash
 $ curl -O http://receptor.local.lattice.cf/v1/sync/osx/ltc
@@ -76,4 +76,41 @@ $ mv ltc /usr/local/bin
 
 *Reference: http://lattice.cf/docs/getting-started/*
 
+
+#### Install Docker
+
+##### Via Homebrew
+
+Ensure that VirtualBox is installed and that you've recently updated your homebrew installation with `brew update && brew upgrade`.
+
+```
+$ brew install docker docker-machine<br>
+$ docker-machine create --driver virtualbox default<br>
+$ eval "$(docker-machine env default)"<br>
+```
+To test your docker installation, try running:
+
+`$ docker images`
+
+You should see output similar to
+
+```
+$ docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+
+$
+```
+
+###### Possible version mismatch issue
+It is possible that you might encounter an error when trying to run any docker command:
+
+```
+$ docker images
+Error response from daemon: client is newer than server (client API version: 1.21, server API version: 1.20)
+$
+```
+
+This is easily remedied by upgrading your docker machine instance:
+
+`$ docker-machine upgrade default`
 
